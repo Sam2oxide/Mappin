@@ -6,6 +6,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -18,19 +26,24 @@
         android:theme="@style/Theme.Mappin"
         tools:targetApi="31">
         <activity
-            android:name=".activities.ImportActivity"
+            android:name=".activities.SettingsActivity"
             android:exported="false"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.Mappin.NoActionBar" />
-<!--        android:screenOrientation="portrait"-->
-
+        <activity
+            android:name=".activities.ImportActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.Mappin.NoActionBar" /> <!-- android:screenOrientation="portrait" -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA7w2l8pWSj6RCTeQJqTo_IzkbZL1nsgwM" />
 
         <activity
             android:name=".activities.MapsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="fullSensor"/>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Mappin</string>
+    <string name="app_logo">App Logo</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="recent_projects">Recent Projects</string>
+    <string name="welcome_back">Welcome back to Mappin</string>
+    <string name="open_local_file">Open local file</string>
+    <string name="open_cloud_file">Open cloud file</string>
+    <string name="select_project">Select project</string>
+    <string name="internal_storage">Internal Storage</string>
+    <string name="cloud_storage">Cloud Storage</string>
+    <string name="import_project_from_folder">Import Project from Folder</string>
+    <string name="import_project_from_zip">Import Project from ZIP</string>
+    <string name="online_point">Online Point</string>
+    <string name="online_poly">Online Poli</string>
+    <string name="google_hybrid">Google Hybrid</string>
+    <string name="osm_standard">OSM Standard</string>
+</resources>

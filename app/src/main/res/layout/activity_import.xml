@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ImportActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_import_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/app_gradient_color_bg">
+
+        <com.kudu.mappin.util.CustomTextViewBold
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="?android:attr/actionBarSize"
+            android:gravity="center"
+            android:text="@string/select_project"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/internal_storage"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
+        app:icon="@drawable/ic_data_storage"
+        app:iconSize="20dp"
+        app:iconTint="@color/colorPrimaryText" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cloud_storage"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="16sp"
+        app:backgroundTint="@color/white"
+        app:icon="@drawable/ic_cloud_storage"
+        app:iconSize="20dp"
+        app:iconTint="@color/colorPrimaryText" />
+
+</LinearLayout>

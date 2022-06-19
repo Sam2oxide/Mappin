@@ -1,21 +1,34 @@
 package com.kudu.mappin.activities
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityCompat
+import com.github.florent37.runtimepermission.kotlin.askPermission
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityMapsBinding
+import java.io.IOException
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -24,6 +37,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
 
     private lateinit var toggle: ActionBarDrawerToggle
+    private var currentLatitude = 0.0
+    private var currentLongitude = 0.0
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        askPermissionForLocation()
 
         //online point functionality
         binding.btnAddPoly.setOnClickListener {
@@ -118,7 +135,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //TODO: implement search for locations
         val searchView = menu?.findItem(R.id.search_view)?.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = true
+            //            override fun onQueryTextSubmit(query: String?): Boolean = true
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val location = searchView.query.toString()
+                var addressList: List<Address>? = null
+                if (location != null || location == "") {
+                    val geocoder = Geocoder(this@MapsActivity)
+                    try {
+                        addressList = geocoder.getFromLocationName(location, 1)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    val address: Address = addressList!![0]
+                    val latLng = LatLng(address.latitude, address.longitude)
+
+                    mMap.addMarker(MarkerOptions().position(latLng).title(location))
+                    moveCamera(latLng, 20F)
+                }
+                return false
+            }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 /* musicListSearch = ArrayList()
@@ -131,7 +166,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                      search = true
                      musicAdapter.updateMusicList(searchList = musicListSearch)
                  }*/
-                return true
+
+                /*var addressList: List<Address>? = null
+
+                if (newText != null || !newText.equals("")) {
+                    val geocoder = Geocoder(this@MapsActivity)
+                    try {
+                        addressList = geocoder.getFromLocationName(newText, 1)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    val address: Address = addressList!![0]
+                    val latLng = LatLng(address.latitude, address.longitude)
+                    mMap.addMarker(MarkerOptions().position(latLng).title(newText))
+//                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+                    moveCamera(latLng, 20F)
+                    Toast.makeText(applicationContext,
+                        address.latitude.toString() + " " + address.longitude,
+                        Toast.LENGTH_LONG).show()
+                }*/
+
+//                return true
+                return false
             }
         })
         return super.onCreateOptionsMenu(menu)
@@ -139,10 +195,79 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        googleMap.mapType = MAP_TYPE_SATELLITE
+        askPermissionForLocation()
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        mMap.isMyLocationEnabled = true // mMap!!
+        mMap.uiSettings.isZoomControlsEnabled = true
+    }
+
+    private fun askPermissionForLocation() {
+        askPermission(Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION) {
+            //all permissions already granted or just granted
+
+            getCurrentLocation()
+
+        }.onDeclined { e ->
+            if (e.hasDenied()) {
+                //the list of denied permissions
+                repeat(e.denied.size) {
+                }
+                AlertDialog.Builder(this)
+                    .setMessage("Please accept our permissions")
+                    .setPositiveButton("yes") { _, _ ->
+                        e.askAgain()
+                    } //ask again
+                    .setNegativeButton("no") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+
+            if (e.hasForeverDenied()) {
+                //the list of forever denied permissions, user has check 'never ask again'
+                repeat(e.foreverDenied.size) {
+                }
+                e.goToSettings()
+            }
+        }
+    }
+
+    private fun getCurrentLocation() {
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(this@MapsActivity)
+
+        try {
+            @SuppressLint("MissingPermission")
+            val location = fusedLocationProviderClient.lastLocation
+
+            location.addOnCompleteListener { loc ->
+                if (loc.isSuccessful) {
+                    val currentLocation = loc.result
+                    if (currentLocation != null) {
+                        moveCamera(LatLng(currentLocation.latitude, currentLocation.longitude), 20F)
+
+                        currentLatitude = currentLocation.latitude
+                        currentLongitude = currentLocation.longitude
+                    }
+                } else {
+                    askPermissionForLocation()
+                }
+            }
+        } catch (se: Exception) {
+            Log.e("TAG", "Security Exception")
+        }
+    }
+
+    private fun moveCamera(latLng: LatLng, zoom: Float) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
 }

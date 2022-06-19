@@ -34,6 +34,10 @@
     <string name="dropdown_items">dropdown_items</string>
     <string name="online_poly_features">Online Poly Features</string>
     <string name="datepicker_format">dd/MM/yyyy</string>
+    <string name="id">id</string>
+    <string name="orden">orden</string>
+    <string name="cod_prod">cod_prod</string>
+    <string name="prov">prov</string>
     <string-array name="tipo_menu">
         <item>Mecanizada</item>
         <item>Riego</item>

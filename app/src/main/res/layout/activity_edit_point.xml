@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.EditPointActivity">
+    tools:context=".activities.EditPointActivity"
+    tools:ignore="HardcodedText">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_add_edit_point_activity"
@@ -73,7 +74,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="id"
+                    android:hint="@string/id"
                     android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
@@ -81,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:text="id" />
+                        android:text="@string/id" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <CheckBox
@@ -103,7 +104,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="orden"
+                    android:hint="@string/orden"
                     android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
@@ -111,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="orden" />
+                        android:text="@string/orden" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <CheckBox
@@ -133,7 +134,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="cod_prod"
+                    android:hint="@string/cod_prod"
                     android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
@@ -141,7 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="cod_prod" />
+                        android:text="@string/cod_prod" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <CheckBox
@@ -163,7 +164,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="prov"
+                    android:hint="@string/prov"
                     android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
@@ -171,7 +172,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="prov" />
+                        android:text="@string/prov" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <CheckBox
@@ -598,7 +599,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/til_area_cos"
                     android:layout_alignParentEnd="true"
-                    android:checked="false" />
+                    android:checked="false"
+                    tools:ignore="TooManyViews" />
 
             </RelativeLayout>
 
@@ -638,7 +640,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
                         android:padding="10dp"
-                        android:src="@drawable/ic_datepicker" />
+                        android:src="@drawable/ic_datepicker"
+                        android:contentDescription="btn_datepicker_fe_siem" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
@@ -685,7 +688,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
                         android:padding="10dp"
-                        android:src="@drawable/ic_datepicker" />
+                        android:src="@drawable/ic_datepicker"
+                        android:contentDescription="btn_datepicker_fe_cos" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
@@ -707,10 +711,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="produccion"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_produccion"
@@ -740,10 +741,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="redim"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_redim"
@@ -773,10 +771,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="tpo"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/dropdown_tpo"
@@ -805,10 +800,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="coa"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_coa"
@@ -838,10 +830,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="cod_reg"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_cod_reg"
@@ -871,10 +860,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="zona_reg"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_zona_reg"
@@ -904,10 +890,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ruta"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_ruta"
@@ -938,10 +921,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="rubro"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_rubro"
@@ -971,10 +951,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="estado"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/dropdown_estado"
@@ -1003,10 +980,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="coment"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_coment"
@@ -1036,10 +1010,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="observa"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.kudu.mappin.util.CustomEditText
                         android:id="@+id/et_observa"
@@ -1069,10 +1040,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="responsabl"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/dropdown_responsabl"
@@ -1126,7 +1094,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
                         android:padding="10dp"
-                        android:src="@drawable/ic_datepicker" />
+                        android:src="@drawable/ic_datepicker"
+                        android:contentDescription="btn_datepicker_fe_ac" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
@@ -1148,10 +1117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="variedad"
-                    android:textColorHint="@color/colorSecondaryText"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:textColorHint="@color/colorSecondaryText">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/dropdown_variedad"

@@ -53,9 +53,106 @@
                 tools:context=".activities.MapsActivity" />
         </LinearLayout>
 
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <com.kudu.mappin.util.CustomRadioButton
+                android:id="@+id/btn_maps"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/map_mode_selector"
+                android:button="@null"
+                android:drawableEnd="@drawable/ic_map"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:paddingStart="0dp"
+                android:paddingEnd="10dp" />
+
+            <com.kudu.mappin.util.CustomRadioButton
+                android:id="@+id/btn_edit_maps"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/map_mode_selector"
+                android:button="@null"
+                android:drawableStart="@drawable/ic_edit_road"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp" />
+
+        </RadioGroup>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btn_add_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/linear_add_poly_buttons"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="3dp"
+            android:visibility="visible"
+            app:icon="@drawable/ic_add_button"
+            app:iconSize="50dp"
+            app:iconTint="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/linear_add_poly_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_cancel_poly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_cancel_poly"
+                app:iconSize="50dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_confirm_poly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_correct"
+                app:iconSize="50dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_remove_poly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_remove_poly"
+                app:iconSize="50dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_add__poly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_add_button"
+                app:iconSize="50dp"
+                app:iconTint="@color/white" />
+        </LinearLayout>
 
     </RelativeLayout>
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_bar_view"
@@ -64,10 +161,10 @@
         android:layout_gravity="start"
         android:background="@drawable/app_gradient_color_bg"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/maps_nav_header_menu"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/maps_menu" />
+    <!--    app:headerLayout="@layout/maps_nav_header_menu"-->
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

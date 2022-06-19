@@ -45,6 +45,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        //online point functionality
+        binding.btnAddPoly.setOnClickListener {
+            startActivity(Intent(this, EditPolyActivity::class.java))
+            Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        //online point
+        binding.btnAddPoint.setOnClickListener {
+            startActivity(Intent(this, EditPointActivity::class.java))
+            Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
+        }
+
         //sidenav
         binding.navBarView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -72,22 +84,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         //sideNav header view
-        /*val headerView: View = binding.navBarView.getHeaderView(0)
-        val btnSettings = headerView.findViewById<ImageView>(R.id.btn_settings)
-        val btnCloud = headerView.findViewById<ImageView>(R.id.btn_cloud_nav)
-        headerView.setOnClickListener {
-            when (it.id) {
-                R.id.btn_settings -> {
-//                    startActivity(Intent(this, SettingsActivity::class.java))
-                    Toast.makeText(baseContext, "Settings clicked", Toast.LENGTH_SHORT)
-                        .show()
-                }
-                R.id.btn_cloud_nav -> {
-                    Toast.makeText(baseContext, "Cloud Maps clicked", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        }*/
+        /* val headerView: View = binding.navBarView.getHeaderView(0)
+         val btnSettings = headerView.findViewById<ImageView>(com.kudu.mappin.R.id.btn_settings)
+         val btnCloud = headerView.findViewById<ImageView>(com.kudu.mappin.R.id.btn_cloud_nav)
+         headerView.setOnClickListener {
+             when (it.id) {
+                 R.id.btn_settings -> {
+ //                    startActivity(Intent(this, SettingsActivity::class.java))
+                     Toast.makeText(baseContext, "Settings clicked", Toast.LENGTH_SHORT)
+                         .show()
+                 }
+                 R.id.btn_cloud_nav -> {
+                     Toast.makeText(baseContext, "Cloud Maps clicked", Toast.LENGTH_SHORT)
+                         .show()
+                 }
+             }
+         }*/
 
 
     }

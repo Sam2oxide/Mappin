@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditPolyActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_edit_poly_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/app_gradient_color_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_add_poly_features"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/btn_add_point_feature"
+                android:src="@drawable/ic_correct"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/online_poly_features"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <!--            android:layout_marginEnd="?android:attr/actionBarSize"-->
+
+            <ImageButton
+                android:id="@+id/btn_delete_poly_features"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/btn_delete_point_feature"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/white" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_id"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="id"
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.kudu.mappin.util.CustomEditText
+                android:id="@+id/et_poly_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="id" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/til_id"
+            android:layout_alignParentEnd="true"
+            android:checked="false" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_nombre"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="nombre"
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.kudu.mappin.util.CustomEditText
+                android:id="@+id/et_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="nombre" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/til_nombre"
+            android:layout_alignParentEnd="true"
+            android:checked="false" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_comentario"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="comentario"
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.kudu.mappin.util.CustomEditText
+                android:id="@+id/et_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="comentario" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/til_comentario"
+            android:layout_alignParentEnd="true"
+            android:checked="false" />
+
+    </RelativeLayout>
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_datepicker"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:hint="datepicker"
+            android:textColorHint="@color/colorSecondaryText">
+
+            <com.kudu.mappin.util.CustomEditText
+                android:id="@+id/et_datepicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="none"
+                android:text="@string/datepicker_format" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/til_datepicker"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_datepicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:padding="10dp"
+                android:src="@drawable/ic_datepicker" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+
+        </LinearLayout>
+    </RelativeLayout>-->
+
+
+</LinearLayout>

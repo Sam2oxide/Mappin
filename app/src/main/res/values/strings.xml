@@ -25,4 +25,41 @@
     <string name="btn_cloud_nav">btn_cloud_nav</string>
     <string name="settings">Settings</string>
     <string name="title_cloud_maps">Cloud Maps</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="online_point_features">Online Point Features</string>
+    <string name="btn_add_point_feature">btn add point feature</string>
+    <string name="btn_delete_point_feature">btn delete point feature</string>
+    <string name="selected_item">Selected item:</string>
+    <string name="dropdown_items">dropdown_items</string>
+    <string name="online_poly_features">Online Poly Features</string>
+    <string name="datepicker_format">dd/MM/yyyy</string>
+    <string-array name="tipo_menu">
+        <item>Mecanizada</item>
+        <item>Riego</item>
+        <item>Secano</item>
+        <item>Otro</item>
+    </string-array>
+    <string-array name="tpo_menu">
+        <item>Cliente agrosilo</item>
+        <item>Prospecto</item>
+    </string-array>
+    <string-array name="estado_menu">
+        <item>Compra</item>
+        <item>No compra cerrado</item>
+    </string-array>
+    <string-array name="responsabl_menu">
+        <item>Alexander Vásquez</item>
+        <item>Denis Moreno</item>
+        <item>Michael Rodríguez</item>
+        <item>Ricardo Espino</item>
+        <item>Tatiana Carrera</item>
+        <item>Wilson Gómez</item>
+    </string-array>
+    <string-array name="variedad_menu">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+    </string-array>
 </resources>

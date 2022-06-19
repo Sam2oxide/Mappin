@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditPointActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_edit_point_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/app_gradient_color_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_add_point_features"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/btn_add_point_feature"
+                android:src="@drawable/ic_correct"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/online_point_features"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <!--            android:layout_marginEnd="?android:attr/actionBarSize"-->
+
+            <ImageButton
+                android:id="@+id/btn_delete_point_features"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/btn_delete_point_feature"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/white" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_id"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="id"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_point_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="id" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_id"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_orden"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="orden"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_orden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="orden" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_orden"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_cod_prod"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="cod_prod"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_cod_prod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="cod_prod" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_cod_prod"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_prov"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="prov"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_prov"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="prov" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_prov"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_dis"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="dis"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_dis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="dis" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_dis"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_crg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="crg"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_crg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="crg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_crg"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_punto_ref"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="punto_ref"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_punto_ref"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="punto_ref" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_punto_ref"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_tipo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="tipo"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/dropdown_tipo"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_tipo"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_empresa"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="empresa"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_empresa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="empresa" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_empresa"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_productor"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="productor"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_productor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="productor" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_productor"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_otro_prod"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="otro_prod"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_otro_prod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="otro_prod" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_otro_prod"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_clip"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="clip"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_clip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="clip" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_clip"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_ruc"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ruc"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_ruc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="ruc" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_ruc"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_contacto"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="contacto"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_contacto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="contacto" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_contacto"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_tel_fijo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="tel_fijo"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_tel_fijo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="tel_fijo" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_tel_fijo"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_cel"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="cel"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_cel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="cel" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_cel"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_area_sem"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="area_sem"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_area_sem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="area_sem" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_area_sem"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_area_cos"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="area_cos"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_area_cos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="area_cos" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_area_cos"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_fe_siem"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="fe_siem"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_fe_siem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:text="@string/datepicker_format" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/til_fe_siem"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_datepicker_fe_siem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_datepicker" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_fe_cos"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="fe_cos"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_fe_cos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:text="@string/datepicker_format" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/til_fe_cos"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_datepicker_fe_cos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_datepicker" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_produccion"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="produccion"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_produccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="produccion" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_produccion"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_redim"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="redim"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_redim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="redim" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_redim"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_tpo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="tpo"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/dropdown_tpo"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_tpo"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_coa"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="coa"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_coa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="coa" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_coa"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_cod_reg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="cod_reg"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_cod_reg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="cod_reg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_cod_reg"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_zona_reg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="zona_reg"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_zona_reg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="zona_reg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_zona_reg"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_ruta"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ruta"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_ruta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="ruta" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_ruta"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--                TODO: text by default-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_rubro"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="rubro"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_rubro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="rubro" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_rubro"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_estado"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="estado"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/dropdown_estado"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_estado"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_coment"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="coment"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_coment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="coment" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_coment"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_observa"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="observa"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_observa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="observa" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_observa"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_responsabl"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="responsabl"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/dropdown_responsabl"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_responsabl"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_fe_ac"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="fe_ac"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.kudu.mappin.util.CustomEditText
+                        android:id="@+id/et_fe_ac"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:text="@string/datepicker_format" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/til_fe_ac"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_datepicker_fe_ac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_datepicker" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_variedad"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="variedad"
+                    android:textColorHint="@color/colorSecondaryText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/dropdown_variedad"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/til_variedad"
+                    android:layout_alignParentEnd="true"
+                    android:checked="false" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

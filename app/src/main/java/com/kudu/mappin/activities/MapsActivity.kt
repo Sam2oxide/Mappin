@@ -9,6 +9,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -63,16 +64,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         askPermissionForLocation()
 
         //online point functionality
-        binding.btnAddPoly.setOnClickListener {
+        binding.linearAddPolyButtons.visibility = View.GONE
+        /*binding.btnAddPoly.setOnClickListener {
             startActivity(Intent(this, EditPolyActivity::class.java))
             Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
         //online point
-        binding.btnAddPoint.setOnClickListener {
+        binding.btnAddPoint.visibility = View.GONE
+        /*binding.btnAddPoint.setOnClickListener {
             startActivity(Intent(this, EditPointActivity::class.java))
             Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
-        }
+        }*/
+
+        //radio buttons
+        // TODO: radio buttons implementation for editing and viewing map
 
         //sidenav
         binding.navBarView.setNavigationItemSelectedListener {
@@ -81,11 +87,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     Toast.makeText(this,
                         "Online Point clicked",
                         Toast.LENGTH_SHORT).show()
+
+                    binding.btnAddPoint.visibility = View.VISIBLE
+                    binding.linearAddPolyButtons.visibility = View.GONE
+                    binding.btnAddPoint.setOnClickListener {
+                        startActivity(Intent(this, EditPointActivity::class.java))
+                        Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 R.id.nav_online_polygon -> {
                     Toast.makeText(this,
                         "Online Polygon clicked",
                         Toast.LENGTH_SHORT).show()
+
+                    binding.linearAddPolyButtons.visibility = View.VISIBLE
+                    binding.btnAddPoint.visibility = View.GONE
+                    binding.btnAddPoly.setOnClickListener {
+                        startActivity(Intent(this, EditPolyActivity::class.java))
+                        Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 R.id.nav_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
@@ -100,24 +120,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
 
-        //sideNav header view
-        /* val headerView: View = binding.navBarView.getHeaderView(0)
-         val btnSettings = headerView.findViewById<ImageView>(com.kudu.mappin.R.id.btn_settings)
-         val btnCloud = headerView.findViewById<ImageView>(com.kudu.mappin.R.id.btn_cloud_nav)
-         headerView.setOnClickListener {
-             when (it.id) {
-                 R.id.btn_settings -> {
- //                    startActivity(Intent(this, SettingsActivity::class.java))
-                     Toast.makeText(baseContext, "Settings clicked", Toast.LENGTH_SHORT)
-                         .show()
-                 }
-                 R.id.btn_cloud_nav -> {
-                     Toast.makeText(baseContext, "Cloud Maps clicked", Toast.LENGTH_SHORT)
-                         .show()
-                 }
-             }
-         }*/
-
 
     }
 
@@ -131,8 +133,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
         menuInflater.inflate(R.menu.maps_nav_menu, menu)
 
-
-        //TODO: implement search for locations
         val searchView = menu?.findItem(R.id.search_view)?.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             //            override fun onQueryTextSubmit(query: String?): Boolean = true
@@ -156,36 +156,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                /* musicListSearch = ArrayList()
- //                Toast.makeText(this@MainActivity, newText.toString(), Toast.LENGTH_SHORT).show()
-                 if (newText != null) {
-                     val userInput = newText.lowercase()
-                     for (song in musicListMA)
-                         if (song.title.lowercase().contains(userInput))
-                             musicListSearch.add(song)
-                     search = true
-                     musicAdapter.updateMusicList(searchList = musicListSearch)
-                 }*/
-
-                /*var addressList: List<Address>? = null
-
-                if (newText != null || !newText.equals("")) {
-                    val geocoder = Geocoder(this@MapsActivity)
-                    try {
-                        addressList = geocoder.getFromLocationName(newText, 1)
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                    val address: Address = addressList!![0]
-                    val latLng = LatLng(address.latitude, address.longitude)
-                    mMap.addMarker(MarkerOptions().position(latLng).title(newText))
-//                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-                    moveCamera(latLng, 20F)
-                    Toast.makeText(applicationContext,
-                        address.latitude.toString() + " " + address.longitude,
-                        Toast.LENGTH_LONG).show()
-                }*/
-
 //                return true
                 return false
             }

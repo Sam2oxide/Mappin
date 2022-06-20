@@ -26,10 +26,13 @@
         android:theme="@style/Theme.Mappin"
         tools:targetApi="31">
         <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.EditPolyActivity"
             android:exported="false"
             android:screenOrientation="fullSensor"
-            android:theme="@style/Theme.Mappin.NoActionBar"/>
+            android:theme="@style/Theme.Mappin.NoActionBar" />
         <activity
             android:name=".activities.EditPointActivity"
             android:exported="false"

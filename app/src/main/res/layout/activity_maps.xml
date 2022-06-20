@@ -58,10 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
             android:background="@color/transparent"
             android:orientation="horizontal"
-            android:visibility="visible"
-            android:layout_margin="10dp">
+            android:visibility="visible">
 
             <com.kudu.mappin.util.CustomRadioButton
                 android:id="@+id/btn_maps"
@@ -74,7 +74,8 @@
                 android:drawableTint="@color/white"
                 android:gravity="center"
                 android:paddingStart="0dp"
-                android:paddingEnd="10dp" />
+                android:paddingEnd="10dp"
+                tools:ignore="UnusedAttribute" />
 
             <com.kudu.mappin.util.CustomRadioButton
                 android:id="@+id/btn_edit_maps"
@@ -87,7 +88,8 @@
                 android:drawableTint="@color/white"
                 android:gravity="center"
                 android:paddingStart="10dp"
-                android:paddingEnd="0dp" />
+                android:paddingEnd="0dp"
+                tools:ignore="UnusedAttribute" />
 
         </RadioGroup>
 
@@ -95,10 +97,12 @@
             android:id="@+id/btn_add_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/linear_add_poly_buttons"
             android:layout_alignParentEnd="true"
-            android:layout_margin="3dp"
-            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="100dp"
+            android:visibility="gone"
+            app:collapsedSize="45dp"
             app:icon="@drawable/ic_add_button"
             app:iconSize="50dp"
             app:iconTint="@color/white" />
@@ -109,8 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="100dp"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/btn_cancel_poly"
@@ -118,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
+                app:collapsedSize="45dp"
                 app:icon="@drawable/ic_cancel_poly"
                 app:iconSize="50dp"
                 app:iconTint="@color/white" />
@@ -128,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
+                app:collapsedSize="45dp"
                 app:icon="@drawable/ic_correct"
                 app:iconSize="50dp"
                 app:iconTint="@color/white" />
@@ -138,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
+                app:collapsedSize="45dp"
                 app:icon="@drawable/ic_remove_poly"
                 app:iconSize="50dp"
                 app:iconTint="@color/white" />
@@ -148,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
+                app:collapsedSize="45dp"
                 app:icon="@drawable/ic_add_button"
                 app:iconSize="50dp"
                 app:iconTint="@color/white" />

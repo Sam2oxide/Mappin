@@ -63,19 +63,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         askPermissionForLocation()
 
-        //online point functionality
-        binding.linearAddPolyButtons.visibility = View.GONE
-        /*binding.btnAddPoly.setOnClickListener {
-            startActivity(Intent(this, EditPolyActivity::class.java))
-            Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
-        }*/
 
-        //online point
+        binding.linearAddPolyButtons.visibility = View.GONE
         binding.btnAddPoint.visibility = View.GONE
-        /*binding.btnAddPoint.setOnClickListener {
-            startActivity(Intent(this, EditPointActivity::class.java))
-            Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
-        }*/
 
         //radio buttons
         // TODO: radio buttons implementation for editing and viewing map

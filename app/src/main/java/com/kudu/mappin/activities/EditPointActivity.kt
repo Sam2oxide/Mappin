@@ -1,16 +1,17 @@
 package com.kudu.mappin.activities
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityEditPointBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EditPointActivity : AppCompatActivity() {
+class EditPointActivity : BaseActivity() {
 
     private lateinit var binding: ActivityEditPointBinding
 
@@ -22,6 +23,27 @@ class EditPointActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditPointBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        //button save
+        binding.btnSavePointFeatures.setOnClickListener {
+            //TODO: add and save the feature
+
+//            showProgressDialog(resources.getString(R.string.please_wait))
+            Toast.makeText(this, "Add Point Features clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MapsActivity::class.java))
+            finish()
+        }
+        //button delete
+        binding.btnDeletePointFeatures.setOnClickListener {
+
+            //TODO: delete the feature
+
+//            showProgressDialog(resources.getString(R.string.please_wait))
+            Toast.makeText(this, "Remove Point Features clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MapsActivity::class.java))
+            finish()
+        }
 
         //dropdown tipo
         //add these to onResume()
@@ -50,19 +72,19 @@ class EditPointActivity : AppCompatActivity() {
         binding.dropdownVariedad.setAdapter(variedadAdapter)
 
         //date picker fe_siem
-        binding.btnDatepickerFeSiem.setOnClickListener{
+        binding.btnDatepickerFeSiem.setOnClickListener {
             datePicker()
             binding.etFeSiem.text = Editable.Factory.getInstance().newEditable(sdf.format(cal.time))
         }
 
         //date picker fe_cos
-        binding.btnDatepickerFeCos.setOnClickListener{
+        binding.btnDatepickerFeCos.setOnClickListener {
             datePicker()
             binding.etFeCos.text = Editable.Factory.getInstance().newEditable(sdf.format(cal.time))
         }
 
         //date picker fe_ac
-        binding.btnDatepickerFeAc.setOnClickListener{
+        binding.btnDatepickerFeAc.setOnClickListener {
             datePicker()
             binding.etFeAc.text = Editable.Factory.getInstance().newEditable(sdf.format(cal.time))
         }

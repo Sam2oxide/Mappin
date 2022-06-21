@@ -38,6 +38,7 @@
     <string name="orden">orden</string>
     <string name="cod_prod">cod_prod</string>
     <string name="prov">prov</string>
+    <string name="please_wait">Please Wait&#8230;</string>
     <string-array name="tipo_menu">
         <item>Mecanizada</item>
         <item>Riego</item>

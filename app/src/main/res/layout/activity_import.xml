@@ -27,6 +27,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_internal_storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/internal_storage"
@@ -40,6 +41,7 @@
         app:iconTint="@color/colorPrimaryText" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cloud_storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cloud_storage"

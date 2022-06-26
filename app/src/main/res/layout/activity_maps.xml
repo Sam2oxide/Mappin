@@ -53,6 +53,68 @@
                 tools:context=".activities.MapsActivity" />
         </LinearLayout>
 
+        <!--    <RelativeLayout
+                android:id="@+id/layout_pointer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent">-->
+
+        <ImageView
+            android:id="@+id/iv_pointer"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/pointer"
+            android:src="@drawable/ic_location_pointer"
+            app:tint="@color/logo_color2" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_pointer"
+            android:layout_alignStart="@id/iv_pointer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.kudu.mappin.util.CustomTextViewBold
+                    android:id="@+id/tv_x_coordinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/x"
+                    android:textColor="@color/white" />
+
+                <com.kudu.mappin.util.CustomTextViewBold
+                    android:id="@+id/tv_y_coordinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/y"
+                    android:textColor="@color/white" />
+
+                <com.kudu.mappin.util.CustomTextViewBold
+                    android:id="@+id/tv_length"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/length"
+                    android:textColor="@color/white" />
+
+                <com.kudu.mappin.util.CustomTextViewBold
+                    android:id="@+id/tv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/area"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <!--        </RelativeLayout>-->
+
         <RadioGroup
             android:id="@+id/radio_group"
             android:layout_width="wrap_content"

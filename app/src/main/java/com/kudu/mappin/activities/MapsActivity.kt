@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
+import android.location.Location
+import android.location.LocationListener
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -30,9 +32,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityMapsBinding
 import java.io.IOException
+import java.util.*
 
-
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
+    GoogleMap.OnCameraMoveListener, GoogleMap.OnCameraMoveStartedListener,
+    GoogleMap.OnCameraIdleListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -41,6 +45,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var currentLatitude = 0.0
     private var currentLongitude = 0.0
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var pointerLatitude = 0.0
+    private var pointerLongitude = 0.0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,9 +70,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         askPermissionForLocation()
 
-
+        //line and poly buttons visibility
         binding.linearAddPolyButtons.visibility = View.GONE
         binding.btnAddPoint.visibility = View.GONE
+
+        //pointer and data visibility
+        binding.ivPointer.visibility = View.GONE
+        binding.tvXCoordinate.visibility = View.GONE
+        binding.tvYCoordinate.visibility = View.GONE
+        binding.tvLength.visibility = View.GONE
+        binding.tvArea.visibility = View.GONE
 
         //radio buttons
         // TODO: radio buttons implementation for editing and viewing map
@@ -80,6 +94,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     binding.btnAddPoint.visibility = View.VISIBLE
                     binding.linearAddPolyButtons.visibility = View.GONE
+                    binding.ivPointer.visibility = View.VISIBLE
+                    binding.tvXCoordinate.visibility = View.VISIBLE
+                    binding.tvYCoordinate.visibility = View.VISIBLE
                     binding.btnAddPoint.setOnClickListener {
                         startActivity(Intent(this, EditPointActivity::class.java))
                         Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
@@ -92,6 +109,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     binding.linearAddPolyButtons.visibility = View.VISIBLE
                     binding.btnAddPoint.visibility = View.GONE
+                    binding.ivPointer.visibility = View.VISIBLE
+                    binding.tvXCoordinate.visibility = View.VISIBLE
+                    binding.tvYCoordinate.visibility = View.VISIBLE
                     binding.btnAddPoly.setOnClickListener {
                         startActivity(Intent(this, EditPolyActivity::class.java))
                         Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
@@ -167,6 +187,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         mMap.isMyLocationEnabled = true // mMap!!
         mMap.uiSettings.isZoomControlsEnabled = true
+
+        mMap.setOnCameraMoveListener(this)
+        mMap.setOnCameraMoveStartedListener(this)
+        mMap.setOnCameraIdleListener(this)
     }
 
     private fun askPermissionForLocation() {
@@ -230,4 +254,53 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun moveCamera(latLng: LatLng, zoom: Float) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
+
+    //pointer
+    override fun onLocationChanged(location: Location) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        var addresses: List<Address>? = null
+        try {
+            addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        setAddress(addresses!![0])
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setAddress(addresses: Address) {
+        if (addresses != null) {
+            if (addresses.getAddressLine(0) != null) {
+                binding.tvXCoordinate.text = "X: ${addresses.latitude}"
+                binding.tvYCoordinate.text = "Y: ${addresses.longitude}"
+//                binding.tvYCoordinate.text = addresses.longitude.toString()
+            }
+        }
+    }
+
+    override fun onCameraMove() {
+    }
+
+    override fun onCameraMoveStarted(p0: Int) {
+    }
+
+    override fun onCameraIdle() {
+        var addresses: List<Address>? = null
+        val geocoder = Geocoder(this, Locale.getDefault())
+        try {
+            addresses = geocoder.getFromLocation(mMap.cameraPosition.target.latitude,
+                mMap.cameraPosition.target.longitude,
+                1)
+
+            setAddress(addresses!![0])
+
+        } catch (e: IndexOutOfBoundsException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+
 }

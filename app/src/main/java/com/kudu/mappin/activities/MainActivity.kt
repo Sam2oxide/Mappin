@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnCloudFile.setOnClickListener {
-            startActivity(Intent(this, MapActivity::class.java))
+            startActivity(Intent(this, MapsActivity::class.java))
 //            startActivity(Intent(this, MapActivity::class.java))
             Toast.makeText(this, "Cloud import clicked", Toast.LENGTH_SHORT).show()
         }

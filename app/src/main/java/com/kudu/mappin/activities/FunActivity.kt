@@ -2,12 +2,10 @@ package com.kudu.mappin.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.location.LocationListener
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -15,7 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityFunBinding
 
-class FunActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
+class FunActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityFunBinding
     private lateinit var mMap: GoogleMap
 
@@ -46,9 +44,6 @@ class FunActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
         mMap.isMyLocationEnabled = true // mMap!!
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        mMap.setOnCameraMoveListener(this)
-        mMap.setOnCameraMoveStartedListener(this)
-        mMap.setOnCameraIdleListener(this)
     }
 
     private fun askPermissionForLocation() {
@@ -56,7 +51,6 @@ class FunActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
             Manifest.permission.ACCESS_COARSE_LOCATION) {
             //all permissions already granted or just granted
 
-            getCurrentLocation()
 
         }.onDeclined { e ->
             if (e.hasDenied()) {
@@ -82,4 +76,5 @@ class FunActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
             }
         }
     }
+
 }

@@ -17,14 +17,13 @@ class MainActivity : AppCompatActivity() {
 
         //local import button
         binding.btnLocalFile.setOnClickListener {
-//            startActivity(Intent(this, ImportActivity::class.java))
             startActivity(Intent(this, ImportActivity::class.java))
             Toast.makeText(this, "import local clicked", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnCloudFile.setOnClickListener {
-//            startActivity(Intent(this, MapsActivity::class.java))
-            startActivity(Intent(this, MapActivity::class.java))
+            startActivity(Intent(this, MapsActivity::class.java))
+//            startActivity(Intent(this, MapActivity::class.java))
             Toast.makeText(this, "Cloud import clicked", Toast.LENGTH_SHORT).show()
         }
     }

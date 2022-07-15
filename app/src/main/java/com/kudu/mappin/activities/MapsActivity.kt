@@ -2,6 +2,7 @@ package com.kudu.mappin.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
@@ -14,7 +15,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
@@ -27,16 +27,17 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityMapsBinding
+import net.postgis.jdbc.geometry.Point
 import java.io.IOException
 import java.util.*
 
+
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
     GoogleMap.OnCameraMoveListener, GoogleMap.OnCameraMoveStartedListener,
-    GoogleMap.OnCameraIdleListener {
+    GoogleMap.OnCameraIdleListener, GoogleMap.OnMarkerDragListener, GoogleMap.OnMapClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -47,6 +48,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var pointerLatitude = 0.0
     private var pointerLongitude = 0.0
+
+    private var points: List<LatLng>? = null
+    private var markers: List<Marker>? = null
+    private var markerNumber = 1
+
+    private var polygon: Polygon? = null
+    private var latLngList: ArrayList<LatLng> = ArrayList()
+    private var markerList: ArrayList<Marker> = ArrayList()
+    private lateinit var markerOptions: MarkerOptions
+    private lateinit var marker: Marker
+    private var polygonOptions: PolygonOptions = PolygonOptions()
+
+    private lateinit var point: Point
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,6 +82,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        //points and polygons
+/*        points = ArrayList()
+        markers = ArrayList<Marker>()*/
         askPermissionForLocation()
 
         //line and poly buttons visibility
@@ -83,6 +100,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
 
         //radio buttons
         // TODO: radio buttons implementation for editing and viewing map
+        binding.radioGroup.setOnCheckedChangeListener { _, _ ->
+            if (binding.btnMaps.isChecked) {
+
+            } else if (binding.btnEditMaps.isChecked) {
+
+            }
+        }
 
         //sidenav
         binding.navBarView.setNavigationItemSelectedListener {
@@ -101,6 +125,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
                         startActivity(Intent(this, EditPointActivity::class.java))
                         Toast.makeText(this, "Add Point clicked", Toast.LENGTH_SHORT).show()
                     }
+                    mMap.setOnMapClickListener { latlng -> // Clears the previously touched position
+                        mMap.clear()
+                        // Animating to the touched position
+//                        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+
+                        val location = LatLng(latlng.latitude, latlng.longitude)
+                        mMap.addMarker(MarkerOptions().position(location))
+                    }
                 }
                 R.id.nav_online_polygon -> {
                     Toast.makeText(this,
@@ -112,9 +144,48 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
                     binding.ivPointer.visibility = View.VISIBLE
                     binding.tvXCoordinate.visibility = View.VISIBLE
                     binding.tvYCoordinate.visibility = View.VISIBLE
-                    binding.btnAddPoly.setOnClickListener {
+
+                    mMap.setOnMapClickListener(this@MapsActivity)
+
+                    binding.btnConfirmPoly.setOnClickListener {
                         startActivity(Intent(this, EditPolyActivity::class.java))
                         Toast.makeText(this, "Add Poly clicked", Toast.LENGTH_SHORT).show()
+                    }
+
+                    binding.btnRemovePoly.setOnClickListener {
+                        if (latLngList.size <= 1) {
+                            latLngList.clear()
+                            mMap.clear()
+                        } else {
+                            latLngList.removeLast()
+                            drawPolygon()
+                        }
+                        Toast.makeText(this, "Remove Poly clicked", Toast.LENGTH_SHORT).show()
+                    }
+
+                    binding.btnCancelPoly.setOnClickListener {
+
+                        //dialog
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Delete Polygon ?")
+                        builder.setMessage("Are you sure you want to delete polygon ?")
+                        builder.setIcon(R.drawable.ic_alert)
+
+                        //performing positive action
+                        builder.setPositiveButton("Yes") { dialogInterface, _ ->
+                            removePolygon()
+                            dialogInterface.dismiss()
+                        }
+                        //performing negative action
+                        builder.setNegativeButton("No") { dialogInterface, _ ->
+                            dialogInterface.dismiss()
+                        }
+
+                        //creating AlertDialog
+                        val alertDialog: AlertDialog = builder.create()
+                        //setting properties
+                        alertDialog.setCancelable(false)
+                        alertDialog.show()
                     }
                 }
                 R.id.nav_settings -> {
@@ -191,6 +262,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         mMap.setOnCameraMoveListener(this)
         mMap.setOnCameraMoveStartedListener(this)
         mMap.setOnCameraIdleListener(this)
+
+        mMap.setOnMarkerDragListener(this)
+//        mMap.setOnMapClickListener(this)
+
     }
 
     private fun askPermissionForLocation() {
@@ -300,6 +375,70 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener,
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    override fun onMarkerDrag(p0: Marker) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onMarkerDragEnd(p0: Marker) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onMarkerDragStart(p0: Marker) {
+        TODO("Not yet implemented")
+    }
+
+    // draw polygon
+    override fun onMapClick(latLng: LatLng) {
+        /*markerOptions = MarkerOptions().position(latLng)
+        marker = mMap.addMarker(markerOptions)!!
+
+        latLngList.add(latLng)
+        markerList.add(marker)
+
+        //draw polygon
+        if (polygon != null) {
+            polygon?.remove()
+        }
+
+        polygonOptions = PolygonOptions().addAll(latLngList)
+            .clickable(true)
+        polygon = mMap.addPolygon(polygonOptions)
+
+        polygon!!.fillColor = resources.getColor(R.color.logo_color2)
+        polygon!!.strokeColor = Color.BLUE*/
+        latLngList.add(latLng)
+        drawPolygon()
+
+    }
+
+    private fun removePolygon() {
+        /*  if (polygon != null) {
+              polygon!!.remove()
+          }
+
+          for (marker in markerList) {
+              marker.remove()
+          }
+          latLngList.clear()
+          markerList.clear()*/
+
+        latLngList.clear()
+        mMap.clear()
+    }
+
+    private fun drawPolygon() {
+        mMap.clear()
+        val polygon = PolygonOptions()
+        latLngList.forEach {
+            mMap.addMarker(MarkerOptions().position(it))
+            polygon.add(it)
+        }
+        polygon.fillColor(resources.getColor(R.color.logo_color1))
+        polygon.strokeWidth(6F)
+        polygon.strokeColor(resources.getColor(R.color.logo_color2))
+        mMap.addPolygon(polygon)
     }
 
 

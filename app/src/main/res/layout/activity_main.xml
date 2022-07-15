@@ -14,22 +14,24 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="100dp">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="220dp"
             android:contentDescription="@string/app_logo"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_playstore" />
 
         <com.kudu.mappin.util.CustomTextView
             android:id="@+id/welcome_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/welcome_back"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:text="@string/welcome"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -59,28 +61,28 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <LinearLayout
-        android:id="@+id/recent_projects_linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_local_file"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+    <!-- <LinearLayout
+         android:id="@+id/recent_projects_linear"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/btn_local_file"
+         android:layout_marginTop="10dp"
+         android:orientation="vertical">
 
-        <com.kudu.mappin.util.CustomTextViewBold
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/recent_projects"
-            android:textSize="16sp" />
+         <com.kudu.mappin.util.CustomTextViewBold
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center"
+             android:text="@string/recent_projects"
+             android:textSize="16sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recent_projects"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp" />
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/rv_recent_projects"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="3dp" />
 
-    </LinearLayout>
+     </LinearLayout>-->
 
 
 </RelativeLayout>

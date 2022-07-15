@@ -33,6 +33,10 @@ class ImportActivity : AppCompatActivity() {
         binding.btnInternalStorage.setOnClickListener {
             askPermissionForStorage()
         }
+
+        binding.btnCloudStorage.setOnClickListener {
+            Toast.makeText(this, "Cloud Import under development", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun askPermissionForStorage() {
@@ -70,20 +74,6 @@ class ImportActivity : AppCompatActivity() {
         }
     }
 
-    /*override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            Constants.READ_STORAGE_PERMISSION_CODE -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.e("value", "Permission Granted, Now you can use local drive .")
-            } else {
-                Log.e("value", "Permission Denied, You cannot use local drive .")
-            }
-        }
-    }*/
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -113,7 +103,6 @@ class ImportActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setUpActionBar() {
         setSupportActionBar(binding.toolbarImportActivity)
 
@@ -136,10 +125,13 @@ class ImportActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_import_from_folder -> {
                 Toast.makeText(this, "Folder Import", Toast.LENGTH_SHORT).show()
+
+                askPermissionForStorage()
+
                 return true
             }
             R.id.action_import_from_zip -> {
-                Toast.makeText(this, "Zip Import", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Zip Import Under Development", Toast.LENGTH_SHORT).show()
                 return true
             }
         }

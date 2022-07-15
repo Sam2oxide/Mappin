@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.kudu.mappin.databinding.ActivityEditPolyBinding
+import com.kudu.mappin.model.Polygon
 
 class EditPolyActivity : BaseActivity() {
 
@@ -18,6 +19,7 @@ class EditPolyActivity : BaseActivity() {
         binding.btnSavePolyFeatures.setOnClickListener {
             //TODO: save the feature
 
+            validatePolyFeatures()
 //            showProgressDialog(resources.getString(R.string.please_wait))
             Toast.makeText(this, "Add Poly Features clicked", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MapsActivity::class.java))
@@ -32,8 +34,17 @@ class EditPolyActivity : BaseActivity() {
             startActivity(Intent(this, MapsActivity::class.java))
             finish()
         }
-        
 
+
+    }
+
+    private fun validatePolyFeatures() {
+        val polygon = Polygon(
+            binding.etPolyId.text.toString().trim { it <= ' ' },
+            //TODO: save geometry JSON
+            binding.etNombre.text.toString().trim { it <= ' ' },
+            binding.etComentario.text.toString().trim { it <= ' ' }
+        )
     }
 
 }

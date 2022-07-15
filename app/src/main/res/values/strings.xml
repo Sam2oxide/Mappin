@@ -4,6 +4,7 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="recent_projects">Recent Projects</string>
     <string name="welcome_back">Welcome back to Mappin</string>
+    <string name="welcome">Welcome to Mappin</string>
     <string name="open_local_file">Open local file</string>
     <string name="open_cloud_file">Open cloud file</string>
     <string name="select_project">Select project</string>

@@ -212,8 +212,8 @@
                 app:iconSize="50dp"
                 app:iconTint="@color/white" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/btn_add__poly"
+           <!-- <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/btn_add_poly"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -221,7 +221,7 @@
                 app:collapsedSize="45dp"
                 app:icon="@drawable/ic_add_button"
                 app:iconSize="50dp"
-                app:iconTint="@color/white" />
+                app:iconTint="@color/white" />-->
         </LinearLayout>
 
     </RelativeLayout>

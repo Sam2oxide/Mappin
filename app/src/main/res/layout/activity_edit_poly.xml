@@ -77,12 +77,12 @@
                 android:text="id" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
+       <!-- <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/til_id"
             android:layout_alignParentEnd="true"
-            android:checked="false" />
+            android:checked="false" />-->
 
     </RelativeLayout>
 
@@ -111,12 +111,12 @@
                 android:text="nombre" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
+ <!--       <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/til_nombre"
             android:layout_alignParentEnd="true"
-            android:checked="false" />
+            android:checked="false" />-->
 
     </RelativeLayout>
 
@@ -145,12 +145,12 @@
                 android:text="comentario" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
+       <!-- <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/til_comentario"
             android:layout_alignParentEnd="true"
-            android:checked="false" />
+            android:checked="false" />-->
 
     </RelativeLayout>
 

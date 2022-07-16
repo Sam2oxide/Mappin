@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         //local import button
         binding.btnLocalFile.setOnClickListener {
-//            startActivity(Intent(this, ImportActivity::class.java))
-            startActivity(Intent(this, MainActivity2::class.java))
+            startActivity(Intent(this, ImportActivity::class.java))
             Toast.makeText(this, "import local clicked", Toast.LENGTH_SHORT).show()
         }
 

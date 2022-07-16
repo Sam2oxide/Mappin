@@ -29,10 +29,7 @@
         android:theme="@style/Theme.Mappin"
         tools:targetApi="31">
         <activity
-            android:name=".activities.FunActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.MapActivity"
+            android:name=".activities.MainActivity2"
             android:exported="false" />
         <activity
             android:name=".activities.BaseActivity"
@@ -59,7 +56,7 @@
             android:theme="@style/Theme.Mappin.NoActionBar" /> <!-- android:screenOrientation="portrait" -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA7w2l8pWSj6RCTeQJqTo_IzkbZL1nsgwM" />
+            android:value="AIzaSyBBHQzltfcKWrZ8zsdEFGf6l5dhwnrwhos" />
 
         <activity
             android:name=".activities.MapsActivity"

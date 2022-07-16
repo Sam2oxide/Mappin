@@ -3,8 +3,10 @@ package com.kudu.mappin.activities
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.kudu.mappin.dao.Db
 import com.kudu.mappin.databinding.ActivityEditPolyBinding
 import com.kudu.mappin.model.Polygon
+
 
 class EditPolyActivity : BaseActivity() {
 
@@ -14,6 +16,9 @@ class EditPolyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditPolyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val db = Db()
+//        val db = Database()
 
         //button add
         binding.btnSavePolyFeatures.setOnClickListener {
@@ -45,6 +50,11 @@ class EditPolyActivity : BaseActivity() {
             binding.etNombre.text.toString().trim { it <= ' ' },
             binding.etComentario.text.toString().trim { it <= ' ' }
         )
+
+       /* val polygonObject = net.postgis.jdbc.geometry.Polygon(
+
+        )*/
+
     }
 
 }

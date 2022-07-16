@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.kudu.mappin.R
 import com.kudu.mappin.databinding.ActivityEditPointBinding
+import com.kudu.mappin.model.Point
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,7 +29,7 @@ class EditPointActivity : BaseActivity() {
         //button save
         binding.btnSavePointFeatures.setOnClickListener {
             //TODO: add and save the feature
-
+            validatePointFeatures()
 //            showProgressDialog(resources.getString(R.string.please_wait))
             Toast.makeText(this, "Add Point Features clicked", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MapsActivity::class.java))
@@ -90,6 +91,46 @@ class EditPointActivity : BaseActivity() {
         }
     }
 
+    private fun validatePointFeatures() {
+        val point = Point(
+            binding.etPointId.text.toString().trim { it <= ' ' },
+            //TODO: save geometry JSON
+            binding.etOrden.text.toString().trim { it <= ' ' },
+            binding.etCodProd.text.toString().trim { it <= ' ' },
+            binding.etProv.text.toString().trim { it <= ' ' },
+            binding.etDis.text.toString().trim { it <= ' ' },
+            binding.etCrg.text.toString().trim { it <= ' ' },
+            binding.etPuntoRef.text.toString().trim { it <= ' ' },
+            binding.dropdownTipo.text.toString().trim { it <= ' ' },//tipo
+            binding.etEmpresa.text.toString().trim { it <= ' ' },
+            binding.etProductor.text.toString().trim { it <= ' ' },
+            binding.etOtroProd.text.toString().trim { it <= ' ' },
+            binding.etClip.text.toString().trim { it <= ' ' },
+            binding.etRuc.text.toString().trim { it <= ' ' },
+            binding.etContacto.text.toString().trim { it <= ' ' },
+            binding.etTelFijo.text.toString().trim { it <= ' ' },
+            binding.etCel.text.toString().trim { it <= ' ' },
+            binding.etAreaSem.text.toString().trim { it <= ' ' },
+            binding.etAreaCos.text.toString().trim { it <= ' ' },
+            binding.etFeSiem.text.toString().trim { it <= ' ' }, //fe_siem
+            binding.etFeCos.text.toString().trim { it <= ' ' },//fe_cos
+            binding.etProduccion.text.toString().trim { it <= ' ' },
+            binding.etRedim.text.toString().trim { it <= ' ' },
+            binding.dropdownTpo.text.toString().trim { it <= ' ' },//tpo
+            binding.etCoa.text.toString().trim { it <= ' ' },
+            binding.etCodReg.text.toString().trim { it <= ' ' },
+            binding.etZonaReg.text.toString().trim { it <= ' ' },
+            binding.etRuta.text.toString().trim { it <= ' ' },
+            binding.etRubro.text.toString().trim { it <= ' ' },
+            binding.dropdownEstado.text.toString().trim { it <= ' ' },//estado
+            binding.etComent.text.toString().trim { it <= ' ' },
+            binding.etObserva.text.toString().trim { it <= ' ' },
+            binding.dropdownResponsabl.text.toString().trim { it <= ' ' },//responsabl
+            binding.etFeAc.text.toString().trim { it <= ' ' },//fe_ac
+            binding.dropdownVariedad.text.toString().trim { it <= ' ' },//variedad
+        )
+    }
+
     private fun datePicker() {
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -97,8 +138,6 @@ class EditPointActivity : BaseActivity() {
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                /*val myFormat = "dd/MM/yyyy" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.getDefault())*/
             }
 
         DatePickerDialog(this@EditPointActivity,

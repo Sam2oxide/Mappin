@@ -1,4 +1,4 @@
-package com.kudu.mappin
+package com.kudu.mapping
 
 import org.junit.Test
 
@@ -13,5 +13,5 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-    }
+    loacation assert 
 }
